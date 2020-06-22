@@ -1,0 +1,112 @@
+
+
+Date:2020-01-06 05:28:06,966
+Thread:[1]
+Level:ERROR
+Logger:Syncfusion.Web.Extension.SyncfusionPackage                         [(null)]
+Message:System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Tomi\source\repos\karnekaj123\WcfServiceBaza\'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Syncfusion.Web.Extension.SyncfusionPackage.QueryStatusMenuCommand_BeforeQueryStatus(Object sender, EventArgs e) in D:\Git\RP\vsext_ej2_conversion_migration\SyncfusionEJ2.cs:line 457
+
+
+Date:2020-01-06 05:28:07,001
+Thread:[1]
+Level:ERROR
+Logger:Syncfusion.Web.Extension.SyncfusionPackage                         [(null)]
+Message:System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Tomi\source\repos\karnekaj123\WcfServiceBaza\'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Syncfusion.Web.Extension.SyncfusionPackage.QueryStatusMenuCommand_BeforeQueryStatus(Object sender, EventArgs e) in D:\Git\RP\vsext_ej2_conversion_migration\SyncfusionEJ2.cs:line 457
+
+
+Date:2020-01-06 05:32:24,733
+Thread:[1]
+Level:ERROR
+Logger:Syncfusion.Web.Extension.SyncfusionPackage                         [(null)]
+Message:System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Tomi\source\repos\karnekaj123\WcfServiceBaza\'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Syncfusion.Web.Extension.SyncfusionPackage.QueryStatusMenuCommand_BeforeQueryStatus(Object sender, EventArgs e) in D:\Git\RP\vsext_ej2_conversion_migration\SyncfusionEJ2.cs:line 457
+
+
+Date:2020-01-06 05:32:24,749
+Thread:[1]
+Level:ERROR
+Logger:Syncfusion.Web.Extension.SyncfusionPackage                         [(null)]
+Message:System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Tomi\source\repos\karnekaj123\WcfServiceBaza\'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Syncfusion.Web.Extension.SyncfusionPackage.QueryStatusMenuCommand_BeforeQueryStatus(Object sender, EventArgs e) in D:\Git\RP\vsext_ej2_conversion_migration\SyncfusionEJ2.cs:line 457
+
+
+Date:2020-01-06 05:32:38,817
+Thread:[1]
+Level:ERROR
+Logger:Syncfusion.Web.Extension.SyncfusionPackage                         [(null)]
+Message:System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Tomi\source\repos\karnekaj123\WcfServiceBaza\'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Syncfusion.Web.Extension.SyncfusionPackage.QueryStatusMenuCommand_BeforeQueryStatus(Object sender, EventArgs e) in D:\Git\RP\vsext_ej2_conversion_migration\SyncfusionEJ2.cs:line 457
+
+
+Date:2020-01-06 05:32:38,824
+Thread:[1]
+Level:ERROR
+Logger:Syncfusion.Web.Extension.SyncfusionPackage                         [(null)]
+Message:System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Tomi\source\repos\karnekaj123\WcfServiceBaza\'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Syncfusion.Web.Extension.SyncfusionPackage.QueryStatusMenuCommand_BeforeQueryStatus(Object sender, EventArgs e) in D:\Git\RP\vsext_ej2_conversion_migration\SyncfusionEJ2.cs:line 457
+
+
+Date:2020-01-06 05:33:17,634
+Thread:[1]
+Level:ERROR
+Logger:Syncfusion.Web.Extension.SyncfusionPackage                         [(null)]
+Message:System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Tomi\source\repos\karnekaj123\WcfServiceBaza\'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Syncfusion.Web.Extension.SyncfusionPackage.QueryStatusMenuCommand_BeforeQueryStatus(Object sender, EventArgs e) in D:\Git\RP\vsext_ej2_conversion_migration\SyncfusionEJ2.cs:line 457
+
+
+Date:2020-01-06 05:33:17,648
+Thread:[1]
+Level:ERROR
+Logger:Syncfusion.Web.Extension.SyncfusionPackage                         [(null)]
+Message:System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\Tomi\source\repos\karnekaj123\WcfServiceBaza\'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Syncfusion.Web.Extension.SyncfusionPackage.QueryStatusMenuCommand_BeforeQueryStatus(Object sender, EventArgs e) in D:\Git\RP\vsext_ej2_conversion_migration\SyncfusionEJ2.cs:line 457

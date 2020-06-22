@@ -1,0 +1,520 @@
+﻿@page "/fetchdata"
+@using karnekaj123.Data
+@using System.Collections.ObjectModel;
+@using System.ComponentModel;
+@using static System.Configuration.ConfigurationManager;
+@using System.Data.SqlClient;
+@using System.Data.Entity;
+
+
+
+@inject AvtoService ForecastService
+
+@if (flagid)
+{
+    <h3>ID:</h3>
+    <input type="number" @bind="id" />
+}
+<div>
+    <div style="display:inline-block">
+        <h3>Znamka:</h3>
+        <input type="text" @bind="znamka" required />
+        <h3>Model:</h3>
+        <input type="text" @bind="model" required />
+        <h3>Cena:</h3>
+        <input type="number" @bind="cena" required />
+    </div>
+
+    <div style="display:inline-block">
+        <h3 align="center">IdVmesna:</h3>
+        <input type="number" align="center" @bind="idVmesna" required />
+        <h3 align="center">idAvta:</h3>
+        <input type="number" align="center" @bind="idAvta" required />
+        <h3 align="center">idAvtoSalona:</h3>
+        <input type="number" align="center" @bind="idAvtoSalona" required />
+
+    </div>
+    <div style="display:inline-block">
+        <h3 align="right">ID</h3>
+        <input align="right" style="display:inline" type="text" @bind="IdAvtosalona" required />
+        <h3 align="right">Naziv</h3>
+        <input align="right" type="text" @bind="naziv" required />
+        <h3 align="right">Letnik</h3>
+        <input align="right" type="number" @bind="Letnik" required />
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+
+
+<div class="col-lg-12 control-section">
+    <div class="content-wrapper">
+        <div class="row">
+            <EjsButton ID="add" @onclick="DodajAvto">Dodaj Avto</EjsButton>
+            <EjsButton ID="del" @onclick="IzbrisiAvto">Izbrisi Avto</EjsButton>
+            <EjsButton ID="update" @onclick="PoosodobiAvto">Poosodobi Avto</EjsButton>
+            <EjsGrid DataSource="@ObservableAvti" AllowSelection="true" AllowPaging="true">
+                <GridSelectionSettings EnableToggle="true" Mode="SelectionMode.Row"></GridSelectionSettings>
+                <GridColumns>
+                    <GridColumn Field=@nameof(ObservableDatas.id) HeaderText="ID" IsPrimaryKey="true" TextAlign="@TextAlign.Center" HeaderTextAlign="@TextAlign.Center" Width="140"></GridColumn>
+                    <GridColumn Field=@nameof(ObservableDatas.Znamka) HeaderText="Znamka" Width="150"></GridColumn>
+                    <GridColumn Field=@nameof(ObservableDatas.model) HeaderText="Model" Format="d" TextAlign="TextAlign.Right" Width="160"></GridColumn>
+                    <GridColumn Field=@nameof(ObservableDatas.cena) HeaderText="Cena" EditType="EditType.NumericEdit" Format="C2" Width="140" TextAlign="@TextAlign.Right" HeaderTextAlign="@TextAlign.Right"></GridColumn>
+                </GridColumns>
+            </EjsGrid>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="col-lg-12 control-section">
+    <div class="content-wrapper">
+        <div class="row">
+            <EjsButton ID="add" @onclick="DodajAvtoSalon">Dodaj AvtoSalon</EjsButton>
+            <EjsButton ID="del" @onclick="IzbrisiAvtoSalon">Izbrisi AvtoSalon</EjsButton>
+            <EjsButton ID="update" @onclick="PoosodobiAvtoSalon">Poosodobi AvtoSalon</EjsButton>
+            <EjsGrid DataSource="@ObservableAvtoSaloni" AllowSelection="true" AllowPaging="true">
+                <GridSelectionSettings EnableToggle="true" Mode="SelectionMode.Row"></GridSelectionSettings>
+                <GridColumns>
+                    <GridColumn Field=@nameof(ObservableDatas.id) HeaderText="ID" IsPrimaryKey="true" TextAlign="@TextAlign.Center" HeaderTextAlign="@TextAlign.Center" Width="140"></GridColumn>
+                    <GridColumn Field=@nameof(ObservableDatas.Naziv) HeaderText="Naziv" Width="150"></GridColumn>
+                    <GridColumn Field=@nameof(ObservableDatas.Letnik) HeaderText="Letnik" EditType="EditType.NumericEdit" Width="140" TextAlign="@TextAlign.Right" HeaderTextAlign="@TextAlign.Right"></GridColumn>
+                </GridColumns>
+            </EjsGrid>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col-lg-12 control-section">
+    <div class="content-wrapper">
+        <div class="row">
+            <EjsButton ID="add" @onclick="DodajNaVmesno">Dodaj Na vmesno</EjsButton>
+            <EjsButton ID="del" @onclick="IzbrisiIzVmesne">Izbrisi Iz vmesne</EjsButton>
+            <EjsButton ID="update" @onclick="PoosodobiVmesno">Poosodobi vmesno</EjsButton>
+            <EjsGrid DataSource="@ObservableVmesna" AllowSelection="true" AllowPaging="true">
+                <GridSelectionSettings EnableToggle="true" Mode="SelectionMode.Row"></GridSelectionSettings>
+                <GridColumns>
+                    <GridColumn Field=@nameof(ObservableDatas.idVmesna) HeaderText="ID" IsPrimaryKey="true" TextAlign="@TextAlign.Center" HeaderTextAlign="@TextAlign.Center" Width="140"></GridColumn>
+                    <GridColumn Field=@nameof(ObservableDatas.idAvta) HeaderText="IdAvta" EditType="EditType.NumericEdit" Width="150"></GridColumn>
+                    <GridColumn Field=@nameof(ObservableDatas.idAvtoSalona) HeaderText="IdAvtoSalona" EditType="EditType.NumericEdit" Width="140" TextAlign="@TextAlign.Right" HeaderTextAlign="@TextAlign.Right"></GridColumn>
+                </GridColumns>
+            </EjsGrid>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+@code{
+
+    int id;
+    bool flagid = true;
+    string znamka;
+    string model;
+    int cena;
+    public ObservableCollection<ObservableDatas> ObservableAvti { get; set; }
+    //List<ObservableDatas> Orders = new List<ObservableDatas>();
+    private int uniqueid { get; set; }
+    private int uniqueid2 { get; set; }
+    private int uniqueid3 { get; set; }
+    bool flag = false;
+
+
+
+
+    int IdAvtosalona;
+    string naziv;
+    int Letnik;
+    public ObservableCollection<ObservableDatas> ObservableAvtoSaloni { get; set; }
+
+
+
+    int idVmesna, idAvta, idAvtoSalona;
+    public ObservableCollection<ObservableDatas> ObservableVmesna { get; set; }
+
+
+
+
+    protected override void OnInitialized()
+    {
+        ObservableCollection<ObservableDatas> avti = new ObservableCollection<ObservableDatas>();
+        ObservableCollection<ObservableDatas> salons = new ObservableCollection<ObservableDatas>();
+        ObservableCollection<ObservableDatas> vmesna = new ObservableCollection<ObservableDatas>();
+
+
+        using (var db = new AvtoSalonContext())
+        {
+            foreach (var item in db.Avtos.ToList())
+            {
+                avti.Add(new ObservableDatas() { id = item.id, Znamka = item.znamka, model = item.model, cena = item.cena });
+            }
+
+            foreach (var item in db.salons.ToList())
+            {
+                salons.Add(new ObservableDatas() { Naziv = item.naziv, id = item.id, Letnik = item.Letnik });
+            }
+
+            foreach (var item in db.vmesnas.ToList())
+            {
+                vmesna.Add(new ObservableDatas() { idVmesna = item.id, idAvta = item.idAvta, idAvtoSalona = item.idAvtosalona });
+            }
+        }
+
+        ObservableAvti = new ObservableCollection<ObservableDatas>(avti);
+        ObservableAvtoSaloni = new ObservableCollection<ObservableDatas>(salons);
+        ObservableVmesna = new ObservableCollection<ObservableDatas>(vmesna);
+    }
+    public void DodajAvto()
+    {
+
+
+        using (var db = new AvtoSalonContext())
+        {
+
+            db.Avtos.Add(new Avto { id = uniqueid++, znamka = znamka, cena = cena, model = model });
+            db.SaveChanges();
+        }
+        ObservableAvti.Add(new ObservableDatas() { id = uniqueid, Znamka = znamka, cena = cena, model = model });
+
+    }
+    public void IzbrisiAvto()
+    {
+        flagid = !flagid;
+        if (ObservableAvti.Count() != 0)
+        {
+            using (var db = new AvtoSalonContext())
+            {
+                if (id > 0)
+                {
+                    foreach (var item in db.Avtos.ToList())
+                    {
+                        if (item.id == id)
+                        {
+                            db.Avtos.Remove(item);
+                            db.SaveChanges();
+                            break;
+                        }
+                    }
+                    var neke = ObservableAvti.First(x => x.id == id);
+                    ObservableAvti.Remove(neke);
+                    foreach (var item in ObservableVmesna.ToList())
+                    {
+                        if (item.idAvta==neke.id)
+                        {
+                            ObservableVmesna.Remove(ObservableVmesna.First(x=>x.idAvta==id));
+                            ObservableVmesna.Remove(item);
+                            OdstraniOdvec(id, 0);
+                        }
+                    }
+                }
+            }
+
+
+
+            flagid = !flagid;
+        }
+    }
+
+    public void OdstraniOdvec(int avto, int salon)
+    {
+
+        using (var db= new AvtoSalonContext())
+        {
+            foreach (var item in db.vmesnas.ToList())
+            {
+                if (item.idAvta==avto)
+                {
+                    db.vmesnas.Remove(item);
+                }
+                if (item.idAvtosalona==salon)
+                {
+                    db.vmesnas.Remove(item);
+                }
+
+            }
+            db.SaveChanges();
+        }
+    }
+
+
+    public void PoosodobiAvto()
+    {
+        if (ObservableAvti.Count() != 0)
+        {
+
+            using (var db = new AvtoSalonContext())
+            {
+                foreach (var item in db.Avtos.ToList())
+                {
+                    if (item.id == id)
+                    {
+                        item.znamka = znamka;
+                        item.model = model;
+                        item.cena = cena;
+                        db.SaveChanges();
+                        break;
+                    }
+                }
+            }
+            var name = ObservableAvti.First(x => x.id == id);
+            name.Znamka = znamka;
+            name.model = model;
+            name.cena = cena;
+
+        }
+    }
+
+
+
+    public void DodajAvtoSalon()
+    {
+
+
+        using (var db = new AvtoSalonContext())
+        {
+            db.salons.Add(new AvtoSalon { id = uniqueid2++, Letnik = Letnik, naziv = naziv });
+            db.SaveChanges();
+        }
+        ObservableAvtoSaloni.Add(new ObservableDatas { id = uniqueid2, Naziv = naziv, Letnik = Letnik });
+
+
+    }
+
+    public void IzbrisiAvtoSalon()
+    {
+        using (var db = new AvtoSalonContext())
+        {
+            if (IdAvtosalona > 0)
+            {
+                foreach (var item in db.salons.ToList())
+                {
+                    if (item.id == IdAvtosalona)
+                    {
+                        db.salons.Remove(item);
+                        db.SaveChanges();
+                        break;
+                    }
+                }
+                var neke = ObservableAvtoSaloni.First(x => x.id == IdAvtosalona);
+                ObservableAvtoSaloni.Remove(neke);
+                OdstraniOdvec(0, IdAvtosalona);
+                foreach (var item in ObservableVmesna.ToList())
+                {
+                    if (item.idAvtoSalona==neke.id)
+                    {
+                        ObservableVmesna.Remove(item);
+                        OdstraniOdvec(0, idAvtoSalona);
+                    }
+                }
+
+
+
+            }
+        }
+    }
+
+    public void PoosodobiAvtoSalon()
+    {
+        using (var db = new AvtoSalonContext())
+        {
+            foreach (var item in db.salons.ToList())
+            {
+                if (item.id == IdAvtosalona)
+                {
+                    item.naziv = naziv;
+                    item.Letnik = Letnik;
+                    db.SaveChanges();
+                    break;
+                }
+            }
+        }
+        var name = ObservableAvtoSaloni.First(x => x.id == IdAvtosalona);
+        name.Naziv = naziv;
+        name.Letnik = Letnik;
+    }
+
+
+    public bool PreveriAvtosalon(int index)
+    {
+        using (var db = new AvtoSalonContext())
+        {
+            foreach (var item in db.salons.ToList())
+            {
+                if (item.id == index)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public bool PreveriAvto(int index)
+    {
+        using (var db = new AvtoSalonContext())
+        {
+            foreach (var item in db.Avtos.ToList())
+            {
+                if (item.id == index)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public void DodajNaVmesno()
+    {
+
+
+        if (PreveriAvto(idAvta) && PreveriAvtosalon(idAvtoSalona))
+        {
+            using (var db = new AvtoSalonContext())
+            {
+                db.vmesnas.Add(new Vmesna { id = uniqueid3++, idAvta = idAvta, idAvtosalona = idAvtoSalona });//Preverjaj ce sploh osbtaja avto ali avtohisa
+                db.SaveChanges();
+            }
+
+            ObservableVmesna.Add(new ObservableDatas() { idVmesna = uniqueid3, idAvta = idAvta, idAvtoSalona = idAvtoSalona });
+        }
+
+
+    }
+
+    public void IzbrisiIzVmesne()
+    {
+        using (var db = new AvtoSalonContext())
+        {
+
+            if (idVmesna > 0)
+            {
+                foreach (var item in db.vmesnas.ToList())
+                {
+                    if (item.id == idVmesna)
+                    {
+                        db.vmesnas.Remove(item);
+                        db.SaveChanges();
+                        break;
+                    }
+                }
+                ObservableVmesna.Remove(ObservableVmesna.First(x => x.idVmesna == idVmesna));
+            }
+        }
+    }
+
+    public void PoosodobiVmesno()
+    {
+        using (var db = new AvtoSalonContext())
+        {
+            foreach (var item in db.vmesnas.ToList())
+            {
+                if (item.id == idVmesna)
+                {
+                    item.idAvta = idAvta;
+                    item.idAvtosalona = idAvtoSalona;
+                    db.SaveChanges();
+                    break;
+                }
+            }
+        }
+
+        var name = ObservableVmesna.First(x => x.idVmesna == idVmesna);
+        name.idAvta = idAvta;
+        name.idAvtoSalona = idAvtoSalona;
+    }
+
+
+
+
+
+
+    public class ObservableDatas : INotifyPropertyChanged
+    {
+        public int id { get; set; }
+        private string znamka { get; set; }
+        public string Znamka
+        {
+            get { return znamka; }
+            set
+            {
+                this.znamka = value;
+                NotifyPropertyChanged("CustomerID");
+            }
+        }
+        public string model { get; set; }
+        public double cena { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(string propertyName)
+        {
+            var handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        public int idSalona { get; set; }
+        private string naziv { get; set; }
+        public string Naziv
+        {
+            get { return naziv; }
+            set
+            {
+                this.naziv = value;
+                NotifyPropertyChanged("CustomerID");
+            }
+        }
+        public int Letnik { get; set; }
+
+
+        public int idVmesna { get; set; }
+        private int IdAvta { get; set; }
+        public int idAvtoSalona { get; set; }
+        public int idAvta
+        {
+            get { return IdAvta; }
+            set
+            {
+                this.IdAvta = value;
+                NotifyPropertyChanged("CustomerID");
+            }
+        }
+
+
+        public ObservableDatas()
+        {
+
+        }
+
+        public ObservableDatas(int idsalona, string naziv, int leto)
+        {
+            this.idSalona = idsalona;
+            this.Naziv = naziv;
+            this.Letnik = leto;
+            this.model = naziv;
+            this.id = idsalona;
+            this.znamka = naziv;
+            this.cena = leto;
+        }
+
+    }
+}
