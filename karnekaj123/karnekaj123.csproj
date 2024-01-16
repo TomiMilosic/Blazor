@@ -10,7 +10,7 @@
     <PackageReference Include="Syncfusion.EJ2.Blazor.PdfViewerServer.Windows" Version="17.4.0.40" />
     <PackageReference Include="Syncfusion.EJ2.WordEditor.Blazor" Version="17.4.0.40" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
 </ItemGroup>
 
 <ItemGroup>
